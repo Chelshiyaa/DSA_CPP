@@ -17,7 +17,6 @@ int getWater(int arr[], int n) {
     }
     return res;
 }
-
 int main() {
     int n;
     cout << "Enter the size of array: ";
