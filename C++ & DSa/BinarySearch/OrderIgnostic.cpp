@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
-
 using namespace std;
-
 int orderAgnosticBS(vector<int>& arr, int target) {
     int start = 0;
     int end = arr.size() - 1;

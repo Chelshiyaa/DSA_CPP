@@ -5,6 +5,14 @@ public:
     int get(int index);
     int length();
 };
+int findInMountainArray(int target, MountainArray &mountainArr) {
+    int peak = peakEle(mountainArr);
+    int first = binarySearch(target, mountainArr, 0, peak);
+    if (first != -1) {
+        return first;
+    }
+    return orderAgnosticBS(mountainArr, target, peak + 1, mountainArr.length() - 1);
+}
 int peakEle(MountainArray &mountainArr) {
     int s = 0;
     int e = mountainArr.length() - 1;
@@ -35,14 +43,11 @@ int binarySearch(int tar, MountainArray &mountainArr, int s, int e) {
 
 int orderAgnosticBS(MountainArray &mountainArr, int target, int start, int end) {
     bool isAsc = mountainArr.get(start) < mountainArr.get(end);
-
-    while (start <= end) {
+    while (start<=end) {
         int mid = start + (end - start) / 2;
-
         if (mountainArr.get(mid) == target) {
             return mid;
         }
-
         if (isAsc) {
             if (target < mountainArr.get(mid)) {
                 end = mid - 1;
@@ -60,11 +65,4 @@ int orderAgnosticBS(MountainArray &mountainArr, int target, int start, int end) 
     return -1;
 }
 
-int findInMountainArray(int target, MountainArray &mountainArr) {
-    int peak = peakEle(mountainArr);
-    int first = binarySearch(target, mountainArr, 0, peak);
-    if (first != -1) {
-        return first;
-    }
-    return orderAgnosticBS(mountainArr, target, peak + 1, mountainArr.length() - 1);
-}
+
