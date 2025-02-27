@@ -1,6 +1,5 @@
 #include<iostream>
 using namespace std;
-
 void sliding(int arr[], int n, int key) {
     int sum = 0;
     for (int i = 0; i < key; i++) {
